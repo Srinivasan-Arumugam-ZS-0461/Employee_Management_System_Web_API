@@ -1,14 +1,14 @@
-﻿using EmployeeLibrary.DTO;
+﻿using AutoMapper;
+using EmployeeLibrary.DTO;
 using EmployeeLibrary.Interface;
 using EmployeeLibrary.Queries;
 using MediatR;
-using AutoMapper;
 
 namespace EmployeeLibrary.Handlers
 {
-    public class GetCompanyByIdHandler : IRequestHandler<GetCompanyByIdQuery, CompanyDTO>   
+    public class GetCompanyByIdHandler : IRequestHandler<GetCompanyByIdQuery, CompanyDTO>
     {
-        private readonly ICompanyService _companyService;   
+        private readonly ICompanyService _companyService;
         private readonly IMapper _mapper;
         public GetCompanyByIdHandler(ICompanyService companyService, IMapper mapper)
         {
