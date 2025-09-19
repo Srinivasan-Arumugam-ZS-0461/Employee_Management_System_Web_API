@@ -2,15 +2,18 @@
 using EmployeeLibrary.Exceptions;
 using EmployeeLibrary.Interface;
 using EmployeeLibrary.Models;
+using Microsoft.Extensions.Logging;
 
 namespace EmployeeLibrary.Services
 {
     public class EmployeeService : IEmployeeService
     {
         private readonly IEmployeeRepository _employeeRepository;
-        public EmployeeService(IEmployeeRepository employeeRepository)
+        private readonly ILogger<EmployeeService> _logger;
+        public EmployeeService(IEmployeeRepository employeeRepository, ILogger<EmployeeService> logger)
         {
             _employeeRepository = employeeRepository;
+            _logger = logger;
         }
 
         public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
@@ -47,6 +50,14 @@ namespace EmployeeLibrary.Services
         {
             try
             {
+                _logger.LogInformation("Adding a new employee: {EmployeeName}", employee.Name);
+
+                if(string.IsNullOrWhiteSpace(employee.Name))
+                {
+                    _logger.LogWarning("Attempted to add an employee with an empty name.");
+                    throw new EmployeeException("Employee name cannot be empty.");
+                }
+                _logger.LogInformation("Successfully added a new employee: {EmployeeName}", employee.Name);
                 return _employeeRepository.AddEmployeeAsync(employee);
             }
             catch (Exception)
