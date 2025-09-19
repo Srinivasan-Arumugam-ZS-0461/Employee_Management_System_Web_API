@@ -17,7 +17,7 @@ namespace EmployeeLibrary.Mapper
                 Email = company.Email,
                 CreatedOn = company.CreatedOn,
                 UpdatedOn = company.UpdatedOn
-                
+
             };
         }
         public static Company MapToEntity(CompanyDTO companyDTO)

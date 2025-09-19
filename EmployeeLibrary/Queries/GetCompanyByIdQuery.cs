@@ -1,5 +1,5 @@
-﻿using MediatR;
-using EmployeeLibrary.DTO;
+﻿using EmployeeLibrary.DTO;
+using MediatR;
 
 namespace EmployeeLibrary.Queries
 {

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using EmployeeLibrary.Commands;
 using EmployeeLibrary.DTO;
 using EmployeeLibrary.Interface;
-using MediatR;
 using EmployeeLibrary.Models;
+using MediatR;
 
 namespace EmployeeLibrary.Handlers
 {
@@ -19,7 +14,7 @@ namespace EmployeeLibrary.Handlers
 
         public UpdateCompanyHandler(ICompanyService companyService, IMapper mapper)
         {
-             _companyService = companyService;
+            _companyService = companyService;
             _mapper = mapper;
         }
 
